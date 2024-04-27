@@ -241,6 +241,14 @@
         flex-direction: column;
         align-items: stretch;
         padding: 5px;
+        position: fixed;
+        top: 0; /* Располагаем элемент вверху страницы */
+        width: 5%; /* Задаем ширину элемента в 100% от родительского контейнера */
+        z-index: 1000; /* Устанавливаем высокий уровень z-index, чтобы элемент отображался поверх остального контента */
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .search-button {
         padding: 5px 10px;
@@ -268,7 +276,7 @@
         padding-left: 0;
     }
     .phone img {
-        width: 100%;
+        width: 10%;
     }
     .shopping-list {
         right: 0;
