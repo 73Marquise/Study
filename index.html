@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniStore</title>
+
+    <style>
+        .header {
+            position: fixed;
+            top: 0; /* Располагаем элемент вверху страницы */
+            width: 100%; /* Задаем ширину элемента в 100% от родительского контейнера */
+            background-color: #ffffff; /* Задаем цвет фона */
+            z-index: 1000; /* Устанавливаем высокий уровень z-index, чтобы элемент отображался поверх остального контента */
+            box-shadow: 0 2px 4px #0000001a; /* Добавляем тень для эффекта отделения от контента */
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .store-name {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .search-button {
+        padding: 8px 15px;
+        background-color: transparent;
+        color: black;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px #0000001a; /* Добавляем тень */
+        }
+
+        .search-icon {
+        margin-right: 5px;
+        width: 20px; /* Укажите желаемую ширину контейнера */
+        height: 20px; /* Укажите желаемую высоту контейнера */
+        background-image: url('https://w7.pngwing.com/pngs/410/185/png-transparent-magnifying-glass-computer-icons-magnifying-glass-glass-art-symbol.png'); /* Замените 'ссылка_на_изображение_лупы.png' на ссылку на ваше изображение лупы */
+        background-size: contain; /* Размер изображения будет автоматически масштабироваться */
+        background-repeat: no-repeat; /* Отключаем повторение изображения */
+        display: inline-block; /* Устанавливаем как блочный элемент для правильного позиционирования */
+        }
+        .search-input {
+            border: none;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .button {
+        padding: 8px 15px;
+        background-color: transparent;
+        color: black;
+        border: none;
+        border-radius: 0px;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+        width: 100px; /* Пример задания фиксированной ширины */
+        }
+
+        .button:hover {
+        background-color: #45a049;
+        color: #ffffff;
+    }
+
+    .total-price {
+        width: 150px;
+        margin: 0 auto;
+        visibility: hidden;
+        position: absolute;
+        top: calc(100% + 5px);
+        right: 0;
+        background-color: #f9f9f9;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+    .button:hover .total-price {
+        visibility: visible; /* Показываем общую сумму при наведении курсора */
+    }
+
+        .cart-icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 #00000033;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .mobile-heading {
+        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
+        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
+        margin-bottom: 50px;
+        }
+        .phone {
+        display: inline-block; /* Располагаем блоки горизонтально */
+        text-align: center; /* Центрируем содержимое внутри блока */
+        margin: 10px; /* Добавляем небольшой отступ между блоками */
+        padding-left: 205px;
+        }
+        .phone img {
+            width: 200px; /* Задайте размер изображения по вашему усмотрению */
+            height: auto; /* Сохраняет соотношение сторон изображения */
+            background: none;
+            display: inline;
+        }
+        .phone .price {
+            font-weight: bold;
+            color: green;
+        }
+
+        .smartwatches-heading {
+        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
+        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
+        margin-bottom: 50px;
+        }
+
+        .buy-button {
+        background-color: #3c3b41; /* Задаем цвет фона */
+        color: white; /* Задаем цвет текста */
+        border: none; /* Убираем границу */
+        padding: 10px 20px; /* Задаем отступы внутри кнопки */
+        text-align: center; /* Выравниваем текст по центру */
+        text-decoration: none; /* Убираем подчеркивание ссылки */
+        display: inline-block; /* Устанавливаем кнопку как блочный элемент */
+        font-size: 16px; /* Задаем размер текста */
+        margin: 4px 2px; /* Задаем внешние отступы */
+        cursor: pointer; /* Задаем стиль курсора */
+        border-radius: 8px; /* Задаем скругление углов */
+        }
+
+        .buy-button:hover {
+        background-color: #45a049; /* Изменяем цвет фона при наведении курсора */
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="store-name" onclick="window.scrollTo(0, 0)">MiniStore</div>
+        <!-- Заменяем кнопку на текстовое поле ввода для поиска -->
+        <form role="search" method="get" class="search-button" action="#" onsubmit="return openSearchWindow()">
+            <span class="search-icon"></span>
+            <!-- Здесь можно вводить текст -->
+            <input type="search" class="search-input" placeholder="Введите для поиска" name="search">
+            <button type="submit" style="display: none;"></button>
+        </form>
+        <div class="buttons">
+            <div class="dropdown">
+                <button class="button">Products</button>
+                <div class="dropdown-content">
+                    <a href="#" title="Mobile Phones">Mobile Phones</a>
+                    <a href="#" title="Smart Watches">Smart Watches</a>
+                    <a href="#" title="Headphones">Headphones</a>
+                    <a href="#" title="Accessories">Accessories</a>
+                </div>
+            </div>
+            <button class="button">Sale</button>
+            <button class="button" onclick="showShoppingList()"><span class="cart-icon">🛒</span><span class="total-price"></span></button>
+            <!--<button class="button"><span class="cart-icon">🛒</span></button>
+            <div class="dropdown-content">
+                <ul class="cart-list"></ul>
+            </div>
+        -->
+                <!-- Список купленных товаров будет динамически добавлен сюда -->
+        </div>
+    </div>
+    <script>
+        function openSearchWindow() {
+            var searchTerm = document.querySelector('.search-input').value;
+            if (searchTerm.trim() !== '') {
+                window.open('search.html?query=' + encodeURIComponent(searchTerm), '_blank');
+            }
+            return false; // Prevent form submission
+        }
+    </script>
+
+    <br></br>
+    <div class="smartwatches-heading"><br>Mobile Phones</br></div>
+    <div class="content">
+        <!-- Примеры фотографий телефонов с ценами -->
+        <div class="phone">
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone13-digitalmat-gallery-2-202203?wid=728&hei=666&fmt=png-alpha&.v=1644988764167">
+            <p>iPhone 13</p>
+            <p class="price">62 370₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+        <div class="phone">
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14-digitalmat-gallery-1-202303_GEO_US?wid=728&hei=666&fmt=png-alpha&.v=1679072735070">
+            <p>iPhone 14</p>
+            <p class="price">78 000₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+        <div class="phone">
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-3-202309?wid=728&hei=666&fmt=png-alpha&.v=1694112697687">
+            <p>iPhone 15</p>
+            <p class="price">190 000₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+
+        <div class="smartwatches-heading"><br>Smart Watches</br></div>
+    <div class="content">
+        <!-- Примеры фотографий телефонов с ценами -->
+        <div class="phone">
+            <img src="https://www.apple.com/v/watch/bl/images/overview/select/product_se__frx4hb13romm_xlarge.png">
+            <p>Apple Watch SE</p>
+            <p class="price">24 900₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+        <div class="phone">
+            <img src="https://www.apple.com/v/watch/bl/images/overview/select/product_s9__b8uw2qgcgw1y_xlarge.png">
+            <p>Apple Watch Series 9</p>
+            <p class="price">39 900₽ </p>
+            <button class="buy-button">Buy</button>
+           
+        </div>
+
+        <div class="phone">
+            <img src="https://www.apple.com/v/watch/bl/images/overview/select/product_u2__ebztafh9rvau_xlarge.png">
+            <p>Apple Watch Ultra 2</p>
+            <p class="price">79 900₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+
+        <div class="smartwatches-heading"><br>Headphones</br></div>
+    <div class="content">
+        <!-- Примеры фотографий телефонов с ценами -->
+        <div class="phone">
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1551489688005">
+            <p>AirPods</p>
+            <p>2nd generation</p>
+            <p class="price">12 900₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+        <div class="phone">
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1632861342000">
+            <p>AirPods</p>
+            <p>3nd generation</p>
+            <p class="price">16 900₽ </p>
+            <button class="buy-button">Buy</button>
+           
+        </div>
+
+        <div class="phone">
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1694014871985">
+            <p>AirPods Pro</p>
+            <p>2nd generation (USB-C)</p>
+            <p class="price">24 900₽ </p>
+            <button class="buy-button">Buy</button>
+        </div>
+
+
+        <div class="smartwatches-heading"><br>Accessories</br></div>
+        <div class="content">
+            <!-- Примеры фотографий аксс с ценами -->
+            <div class="phone">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT223?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1693248280978">
+                <p>iPhone 15 Pro</p>
+                <p>Clear Case</p>
+                <p>with MagSafe</p>
+                <p class="price">4 601₽ </p>
+                <button class="buy-button">Buy</button>
+            </div>
+
+            <div class="phone">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MWND3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1708125477348">
+                <p>iPhone 15</p>
+                <p>Silicone Case with MagSafe</p>
+                <p> Light Blue</p>
+                <p class="price">4 601₽ </p>
+                <button class="buy-button" onclick="addToCart('Silicone Case', 4601)">Buy</button>
+            </div>
+
+            <div class="phone">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU7T2_GEO_US?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1542406417329">
+                <p>20W</p>
+                <p>USB-C Power</p>
+                <p>Adapter</p>
+                <p class="price">1 784₽ </p>
+                <button class="buy-button" onclick="addToCart('20W USB-C Power Adapter', 1784)">Buy</button>
+            </div>
+
+            
+
+            <div id="shopping-list">
+                <h2>Список Покупок:</h2>
+                <ul id="items-list"></ul>
+            </div>
+        
+            
+           <!-- <script>
+                let cart = [];
+            
+                function addToCart(itemName, price) {
+                    cart.push({ name: itemName, price: price });
+                    updateCartIcon();
+                    updateTotalPrice();
+                }
+            
+                function removeFromCart(index) {
+                    cart.splice(index, 1);
+                    updateCartIcon();
+                    updateTotalPrice();
+                }
+            
+                function updateCartIcon() {
+                    const cartIcon = document.querySelector('.cart-icon');
+                    if (cartIcon) {
+                        cartIcon.innerText = `🛒 ${cart.length}`;
+                    }
+                }
+            
+                function updateTotalPrice() {
+                    let totalPrice = 0;
+                    const totalPriceElement = document.querySelector('.total-price');
+                    if (totalPriceElement) {
+                        cart.forEach(item => {
+                            totalPrice += item.price;
+                        });
+                        totalPriceElement.innerText = `Total Price: ${totalPrice}₽`;
+                    }
+                }
+            
+                function showShoppingList() {
+                    let shoppingList = document.getElementById("shopping-list");
+                    let itemsList = document.getElementById("items-list");
+                    
+                    itemsList.innerHTML = "";
+            
+                    cart.forEach(item => {
+                        let li = document.createElement("li");
+                        li.textContent = `${item.name} - ${item.price}₽`;
+                        itemsList.appendChild(li);
+                    });
+            
+                    if (shoppingList.style.display === "none") {
+                        shoppingList.style.display = "block";
+                    } else {
+                        shoppingList.style.display = "none";
+                    }
+                }
+            </script>
+
+        -->
+
+
+       <!-- <script>
+            // Initialize an empty cart
+            let cart = [];
+    
+            // Function to add item to cart
+            function addToCart(itemName, price) {
+                cart.push({ name: itemName, price: price });
+                updateCartIcon();
+                updateTotalPrice();
+            }
+    
+            // Function to remove item from cart
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                updateCartIcon();
+                updateTotalPrice();
+            }
+    
+            // Function to update cart icon with number of items
+             function updateCartIcon() {
+                const cartIcon = document.querySelector('.cart-icon');
+                const cartList = document.querySelector('.cart-list');
+                if (cartIcon && cartList) {
+                    cartIcon.innerText = `🛒 ${cart.length}`;
+                    cartList.innerHTML = ''; // Clear previous content
+                    cart.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${item.name} - ${item.price}₽`;
+                        cartList.appendChild(listItem);
+                    });
+                }
+            }
+    
+            // Function to update total price
+            function updateTotalPrice() {
+                let totalPrice = 0;
+                for (let item of cart) {
+                    totalPrice += item.price;
+                }
+                const totalPriceElement = document.querySelector('.total-price');
+                if (totalPriceElement) {
+                    totalPriceElement.innerText = `Total Price: ${totalPrice}₽`;
+                }
+            }
+    
+            // Add event listeners to Buy buttons
+            const buyButtons = document.querySelectorAll('.buy-button');
+            buyButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    const phone = button.parentElement;
+                    const name = phone.querySelector('p:nth-child(2)').innerText;
+                    const price = parseFloat(phone.querySelector('.price').innerText.replace('₽', '').replace(' ', ''));
+                    addToCart(name, price);
+                });
+            });
+    
+            // Add event listeners to Cart icons to remove items
+            const cartIcons = document.querySelectorAll('.cart-icon');
+            cartIcons.forEach((icon, index) => {
+                icon.addEventListener('click', () => {
+                    removeFromCart(index);
+                });
+            });
+        </script> -->
+
+
+
+        <script>
+            let cart = [];
+
+    function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        updateCartIcon();
+        updateTotalPrice();
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartIcon();
+        updateTotalPrice();
+    }
+
+    function updateCartIcon() {
+        const cartIcon = document.querySelector('.cart-icon');
+        if (cartIcon) {
+            cartIcon.innerText = `🛒 ${cart.length}`;
+        }
+    }
+
+    function updateTotalPrice() {
+        let totalPrice = 0;
+        const totalPriceElement = document.querySelector('.total-price');
+        if (totalPriceElement) {
+            cart.forEach(item => {
+                totalPrice += item.price;
+            });
+            totalPriceElement.innerText = `Total Price: ${totalPrice}₽`;
+        }
+    }
+
+    function showShoppingList() {
+        let shoppingList = document.getElementById("shopping-list");
+        let itemsList = document.getElementById("items-list");
+
+        itemsList.innerHTML = "";
+
+        cart.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = `${item.name} - ${item.price}₽`;
+            itemsList.appendChild(li);
+        });
+
+        // Обновляем общую сумму покупок только после отображения списка товаров
+        updateTotalPrice();
+
+        if (shoppingList.style.display === "none") {
+            shoppingList.style.display = "block";
+        } else {
+            shoppingList.style.display = "none";
+        }
+    }
+
+    window.onload = function() {
+        showShoppingList();
+    };
+</script>
+
+</body>
+</html>
