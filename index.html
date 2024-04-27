@@ -235,36 +235,54 @@
 
 
 @media only screen and (max-width: 390px) {
-    /* Для iPhone 12 */
     .header {
+        flex-direction: column;
+        align-items: stretch;
         padding: 5px;
     }
-
-    .store-name {
-        font-size: 18px;
-    }
-
     .search-button {
-        padding: 6px 12px;
+        padding: 5px 10px;
     }
-
     .search-input {
-        font-size: 14px;
+        padding: 3px;
     }
-
     .buttons {
-        gap: 5px;
+        flex-direction: column;
+        align-items: stretch;
     }
-
     .button {
-        font-size: 14px;
-        width: 80px;
-        padding: 6px 10px;
+        width: 100%;
+        margin-top: 5px;
     }
-
     .total-price {
-        width: 100px;
-        padding: 4px;
+        width: auto;
+        padding: 3px;
+        top: auto;
+        bottom: calc(100% + 10px);
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .phone {
+        padding-left: 0;
+    }
+    .phone img {
+        width: 100%;
+    }
+    .shopping-list {
+        right: 0;
+    }
+}
+
+/* iPhone 12 specific styles */
+@media only screen and (min-width: 390px) {
+    .products {
+        padding: 0 10px;
+    }
+    .plus-button,
+    .minus-button {
+        font-size: 14px;
+        width: 25px;
+        height: 25px;
     }
 }
 
