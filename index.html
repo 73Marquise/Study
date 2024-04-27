@@ -245,477 +245,72 @@
 /*адаптивная верстка начало*/
 /*мобилки*/
 @media only screen and (max-width: 600px) {
-    body {
-            margin: 0;
-            padding: 0;
-            background-image: url('.jpg');
-            background-size: cover;
-            background-attachment: fixed; /* Делает фон фиксированным, чтобы он оставался на месте при прокрутке */
-        }
        
-        .header {
-            position: fixed;
-            top: 0; /* Располагаем элемент вверху страницы */
-            width: 100%; /* Задаем ширину элемента в 100% от родительского контейнера */
-            background-color: #ffffff; /* Задаем цвет фона */
-            z-index: 1000; /* Устанавливаем высокий уровень z-index, чтобы элемент отображался поверх остального контента */
-            box-shadow: 0 2px 4px #0000001a; /* Добавляем тень для эффекта отделения от контента */
-            background-color: #f4f4f4;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .store-name {
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .search-button {
-        padding: 8px 15px;
-        background-color: transparent;
-        color: black;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 2px 4px #0000001a; /* Добавляем тень */
-        }
+    .header {
+        padding: 5px; /* Уменьшаем отступы для компактного вида */
+    }
 
-        .search-icon {
-        margin-right: 5px;
-        width: 20px; /* Укажите желаемую ширину контейнера */
-        height: 20px; /* Укажите желаемую высоту контейнера */
-        background-image: url('https://w7.pngwing.com/pngs/410/185/png-transparent-magnifying-glass-computer-icons-magnifying-glass-glass-art-symbol.png'); /* Замените 'ссылка_на_изображение_лупы.png' на ссылку на ваше изображение лупы */
-        background-size: contain; /* Размер изображения будет автоматически масштабироваться */
-        background-repeat: no-repeat; /* Отключаем повторение изображения */
-        display: inline-block; /* Устанавливаем как блочный элемент для правильного позиционирования */
-        }
-        .search-input {
-            border: none;
-            padding: 5px;
-            font-size: 16px;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .button {
-        padding: 8px 15px;
-        background-color: transparent;
-        color: black;
-        border: none;
-        border-radius: 0px;
-        cursor: pointer;
-        font-size: 16px;
-        position: relative;
-        width: 100px; /* Пример задания фиксированной ширины */
-        }
+    .store-name {
+        font-size: 18px; /* Уменьшаем размер текста */
+    }
 
-        .button:hover {
-        background-color: #45a049;
-        color: #ffffff;
-        }
+    .search-button {
+        padding: 5px 10px; /* Уменьшаем отступы для компактного вида */
+    }
 
-        
-        .total-price {
-            width: 150px;
-            margin: 0 auto;
-            visibility: hidden;
-            position: absolute;
-            top: calc(100% + 5px);
-            right: 0px;
-            background-color: #a89595;
-            padding: 5px;
-            border-radius: 5px; 
-            z-index: 1;
-        }
+    .button {
+        font-size: 14px; /* Уменьшаем размер текста */
+        width: 80px; /* Уменьшаем ширину кнопок */
+        padding: 6px 12px; /* Уменьшаем отступы кнопок */
+    }
 
-        .button:hover .total-price {
-            visibility: visible; /* Показываем общую сумму при наведении курсора */
-        }
+    .buy-button {
+        font-size: 14px; /* Уменьшаем размер текста */
+        width: 100px; /* Уменьшаем ширину кнопки покупки */
+        height: 40px; /* Задаем фиксированную высоту */
+    }
 
-        .cart-icon {
-            font-size: 20px;
-            margin-right: 10px;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 #00000033;
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .mobile-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 50px;
-        }
-        .phone {
-        display: inline-block; /* Располагаем блоки горизонтально */
-        text-align: center; /* Центрируем содержимое внутри блока */
-        margin: 10px; /* Добавляем небольшой отступ между блоками */
-        padding-left: 205px;
-        }
-        .phone img {
-            width: 200px; /* Задайте размер изображения по вашему усмотрению */
-            height: auto; /* Сохраняет соотношение сторон изображения */
-            background: none;
-            display: inline;
-        }
-        .phone .price {
-            font-weight: bold;
-            color: green;
-        }
-
-        .smartwatches-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .mobile-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .acs-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .head-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .buy-button {
-        background-color: #3c3b41; /* Задаем цвет фона */
-        color: white; /* Задаем цвет текста */
-        border: none; /* Убираем границу */
-        padding: 10px 20px; /* Задаем отступы внутри кнопки */
-        text-align: center; /* Выравниваем текст по центру */
-        text-decoration: none; /* Убираем подчеркивание ссылки */
-        display: inline-block; /* Устанавливаем кнопку как блочный элемент */
-        font-size: 16px; /* Задаем размер текста */
-        margin: 4px 2px; /* Задаем внешние отступы */
-        cursor: pointer; /* Задаем стиль курсора */
-        border-radius: 8px; /* Задаем скругление углов */
-        }
-
-        .buy-button:hover {
-        background-color: #45a049; /* Изменяем цвет фона при наведении курсора */
-        }
-
-        .shopping-list {
-    display: none;
-    position: absolute;
-    top: calc(100% + 5px); /* Сдвигаем вниз на 5px от родительского элемента */
-    right: 15px;
-    background-color: #716e6e;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    z-index: 1;
-    white-space: nowrap;
-    list-style: none; /* Убираем маркеры списка */
-    padding: 0; /* Убираем внутренний отступ */
-    margin-bottom: 5px; /* Добавляем небольшой отступ между товарами */
-}
-
-.shopping-list ul {
-    padding: 0; /* Убираем внутренний отступ */
-    list-style-type: none;
-    text-align: left;
-}
-
-.shopping-list li {
-    margin-bottom: 5px; /* Добавляем небольшой отступ между товарами */
-    position: relative; /* Устанавливаем позицию для псевдоэлемента */
-}
-
-.shopping-list li:before {
-    /*content: counter(item) ". "; /* Добавляем нумерацию с помощью псевдоэлемента */
-    /*сounter-increment: item; /* Увеличиваем счетчик */
-    position: absolute; /* Позиционируем псевдоэлемент */
-    left: 0px; /* Сдвигаем псевдоэлемент влево */
-}
-
-.shopping-list .remove-button {
-    display: none; /* Скрываем кнопки удаления */
-}
- 
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    /* Другие стили для расположения товаров */
-}
-
-.category {
-    display: none;
-    /* Другие стили */
-}
-.plus-button,
-.minus-button {
-    font-size: 16px; /* измените размер шрифта по вашему усмотрению */
-    width: 30px; /* измените ширину по вашему усмотрению */
-    height: 30px; /* измените высоту по вашему усмотрению */
-}
+    .plus-button,
+    .minus-button {
+        font-size: 14px; /* Уменьшаем размер кнопок */
+        width: 30px; /* Задаем фиксированную ширину */
+        height: 30px; /* Задаем фиксированную высоту */
+    }
 }
 
 
 /*компы*/
 @media only screen and (min-width: 1025px) {
-    body {
-            margin: 0;
-            padding: 0;
-            background-image: url('.jpg');
-            background-size: cover;
-            background-attachment: fixed; /* Делает фон фиксированным, чтобы он оставался на месте при прокрутке */
-        }
-       
-        .header {
-            position: fixed;
-            top: 0; /* Располагаем элемент вверху страницы */
-            width: 100%; /* Задаем ширину элемента в 100% от родительского контейнера */
-            background-color: #ffffff; /* Задаем цвет фона */
-            z-index: 1000; /* Устанавливаем высокий уровень z-index, чтобы элемент отображался поверх остального контента */
-            box-shadow: 0 2px 4px #0000001a; /* Добавляем тень для эффекта отделения от контента */
-            background-color: #f4f4f4;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .store-name {
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .search-button {
-        padding: 8px 15px;
-        background-color: transparent;
-        color: black;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 2px 4px #0000001a; /* Добавляем тень */
-        }
+    .header {
+        padding: 20px; /* Увеличение отступов для компактного вида */
+    }
 
-        .search-icon {
-        margin-right: 5px;
-        width: 20px; /* Укажите желаемую ширину контейнера */
-        height: 20px; /* Укажите желаемую высоту контейнера */
-        background-image: url('https://w7.pngwing.com/pngs/410/185/png-transparent-magnifying-glass-computer-icons-magnifying-glass-glass-art-symbol.png'); /* Замените 'ссылка_на_изображение_лупы.png' на ссылку на ваше изображение лупы */
-        background-size: contain; /* Размер изображения будет автоматически масштабироваться */
-        background-repeat: no-repeat; /* Отключаем повторение изображения */
-        display: inline-block; /* Устанавливаем как блочный элемент для правильного позиционирования */
-        }
-        .search-input {
-            border: none;
-            padding: 5px;
-            font-size: 16px;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .button {
-        padding: 8px 15px;
-        background-color: transparent;
-        color: black;
-        border: none;
-        border-radius: 0px;
-        cursor: pointer;
-        font-size: 16px;
-        position: relative;
-        width: 100px; /* Пример задания фиксированной ширины */
-        }
+    .store-name {
+        font-size: 24px; /* Увеличение размера текста */
+    }
 
-        .button:hover {
-        background-color: #45a049;
-        color: #ffffff;
-        }
+    .search-button {
+        padding: 10px 20px; /* Увеличение отступов для компактного вида */
+    }
 
-        
-        .total-price {
-            width: 150px;
-            margin: 0 auto;
-            visibility: hidden;
-            position: absolute;
-            top: calc(100% + 5px);
-            right: 0px;
-            background-color: #a89595;
-            padding: 5px;
-            border-radius: 5px; 
-            z-index: 1;
-        }
+    .button {
+        font-size: 18px; /* Увеличение размера текста */
+        width: 120px; /* Увеличение ширины кнопок */
+        padding: 10px 20px; /* Увеличение отступов кнопок */
+    }
 
-        .button:hover .total-price {
-            visibility: visible; /* Показываем общую сумму при наведении курсора */
-        }
+    .buy-button {
+        font-size: 18px; /* Увеличение размера текста */
+        width: 150px; /* Увеличение ширины кнопки покупки */
+        height: 60px; /* Увеличение высоты кнопки покупки */
+    }
 
-        .cart-icon {
-            font-size: 20px;
-            margin-right: 10px;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 #00000033;
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .mobile-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 50px;
-        }
-        .phone {
-        display: inline-block; /* Располагаем блоки горизонтально */
-        text-align: center; /* Центрируем содержимое внутри блока */
-        margin: 10px; /* Добавляем небольшой отступ между блоками */
-        padding-left: 205px;
-        }
-        .phone img {
-            width: 200px; /* Задайте размер изображения по вашему усмотрению */
-            height: auto; /* Сохраняет соотношение сторон изображения */
-            background: none;
-            display: inline;
-        }
-        .phone .price {
-            font-weight: bold;
-            color: green;
-        }
-
-        .smartwatches-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .mobile-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .acs-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .head-heading {
-        font-size: 24px; /* Увеличиваем размер текста до 24 пикселей */
-        font-family: Arial; /* Изменяем шрифт на Arial или другой шрифт без засечек */
-        margin-bottom: 5px;
-        }
-
-        .buy-button {
-        background-color: #3c3b41; /* Задаем цвет фона */
-        color: white; /* Задаем цвет текста */
-        border: none; /* Убираем границу */
-        padding: 10px 20px; /* Задаем отступы внутри кнопки */
-        text-align: center; /* Выравниваем текст по центру */
-        text-decoration: none; /* Убираем подчеркивание ссылки */
-        display: inline-block; /* Устанавливаем кнопку как блочный элемент */
-        font-size: 16px; /* Задаем размер текста */
-        margin: 4px 2px; /* Задаем внешние отступы */
-        cursor: pointer; /* Задаем стиль курсора */
-        border-radius: 8px; /* Задаем скругление углов */
-        }
-
-        .buy-button:hover {
-        background-color: #45a049; /* Изменяем цвет фона при наведении курсора */
-        }
-
-        .shopping-list {
-    display: none;
-    position: absolute;
-    top: calc(100% + 5px); /* Сдвигаем вниз на 5px от родительского элемента */
-    right: 15px;
-    background-color: #716e6e;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    z-index: 1;
-    white-space: nowrap;
-    list-style: none; /* Убираем маркеры списка */
-    padding: 0; /* Убираем внутренний отступ */
-    margin-bottom: 5px; /* Добавляем небольшой отступ между товарами */
-}
-
-.shopping-list ul {
-    padding: 0; /* Убираем внутренний отступ */
-    list-style-type: none;
-    text-align: left;
-}
-
-.shopping-list li {
-    margin-bottom: 5px; /* Добавляем небольшой отступ между товарами */
-    position: relative; /* Устанавливаем позицию для псевдоэлемента */
-}
-
-.shopping-list li:before {
-    /*content: counter(item) ". "; /* Добавляем нумерацию с помощью псевдоэлемента */
-    /*сounter-increment: item; /* Увеличиваем счетчик */
-    position: absolute; /* Позиционируем псевдоэлемент */
-    left: 0px; /* Сдвигаем псевдоэлемент влево */
-}
-
-.shopping-list .remove-button {
-    display: none; /* Скрываем кнопки удаления */
-}
- 
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    /* Другие стили для расположения товаров */
-}
-
-.category {
-    display: none;
-    /* Другие стили */
-}
-.plus-button,
-.minus-button {
-    font-size: 16px; /* измените размер шрифта по вашему усмотрению */
-    width: 30px; /* измените ширину по вашему усмотрению */
-    height: 30px; /* измените высоту по вашему усмотрению */
-}
+    .plus-button,
+    .minus-button {
+        font-size: 18px; /* Увеличение размера кнопок */
+        width: 50px; /* Увеличение ширины кнопок */
+        height: 50px; /* Увеличение высоты кнопок */
+    }
 }
 
 
