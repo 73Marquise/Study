@@ -288,131 +288,54 @@
 
 
 
-/* Для всех мобильных телефонов */
-@media only screen and (max-width: 600px) {
-    /* Стили для мобильных телефонов */
-
-    .header {
-        padding: 5px; /* Уменьшаем отступы для компактного вида */
-        text-align: center; /* Выравниваем текст по центру для лучшей читаемости */
-    }
-
-    .store-name {
-        font-size: 18px; /* Уменьшаем размер текста */
-    }
-
-    .search-button {
-        padding: 5px 10px; /* Уменьшаем отступы для компактного вида */
-    }
-
-    .button {
-        font-size: 14px; /* Уменьшаем размер текста */
-        width: 80px; /* Уменьшаем ширину кнопок */
-        padding: 6px 12px; /* Уменьшаем отступы кнопок */
-    }
-
-    .buy-button {
-        font-size: 14px; /* Уменьшаем размер текста */
-        width: 100px; /* Уменьшаем ширину кнопки покупки */
-        height: 40px; /* Задаем фиксированную высоту */
-    }
-
-    .plus-button,
-    .minus-button {
-        font-size: 14px; /* Уменьшаем размер кнопок */
-        width: 30px; /* Задаем фиксированную ширину */
-        height: 30px; /* Задаем фиксированную высоту */
-    }
-}
-
-/* Для более узких мобильных телефонов */
-@media only screen and (max-width: 480px) {
-    /* Дополнительные стили для очень узких мобильных телефонов */
-
-    .store-name {
-        font-size: 16px; /* Еще больше уменьшаем размер текста */
-    }
-
-    .button {
-        width: 70px; /* Еще больше уменьшаем ширину кнопок */
-    }
-
-    .buy-button {
-        width: 90px; /* Еще больше уменьшаем ширину кнопки покупки */
-    }
-}
-
-
-/*адаптивная верстка начало*/
-/*мобилки*/
-@media only screen and (max-width: 1200px) {
-       
-    .header {
-        padding: 5px; /* Уменьшаем отступы для компактного вида */
-    }
-
-    .store-name {
-        font-size: 18px; /* Уменьшаем размер текста */
-    }
-
-    .search-button {
-        padding: 5px 10px; /* Уменьшаем отступы для компактного вида */
-    }
-
-    .button {
-        font-size: 14px; /* Уменьшаем размер текста */
-        width: 80px; /* Уменьшаем ширину кнопок */
-        padding: 6px 12px; /* Уменьшаем отступы кнопок */
-    }
-
-    .buy-button {
-        font-size: 14px; /* Уменьшаем размер текста */
-        width: 100px; /* Уменьшаем ширину кнопки покупки */
-        height: 40px; /* Задаем фиксированную высоту */
-    }
-
-    .plus-button,
-    .minus-button {
-        font-size: 14px; /* Уменьшаем размер кнопок */
-        width: 30px; /* Задаем фиксированную ширину */
-        height: 30px; /* Задаем фиксированную высоту */
-    }
-}
-
-
 /*компы*/
-@media only screen and (min-width: 1200px) {
-    /* Стили для широких экранов, включая ноутбуки и компьютеры */
-
+/* Laptop specific styles */
+@media only screen and (min-width: 768px) {
     .header {
-        padding: 10px; /* Увеличиваем отступы для более寬敞ного вида */
+        padding: 10px;
     }
-
-    .store-name {
-        font-size: 24px; /* Увеличиваем размер текста */
-    }
-
     .search-button {
-        padding: 10px 15px; /* Увеличиваем отступы для более寬敞ного вида */
+        padding: 8px 15px;
+        font-size: 16px;
     }
-
+    .search-input {
+        padding: 5px;
+        font-size: 16px;
+    }
+    .buttons {
+        flex-direction: row;
+        align-items: center;
+    }
     .button {
-        font-size: 16px; /* Увеличиваем размер текста */
-        width: 100px; /* Увеличиваем ширину кнопок */
-        padding: 8px 16px; /* Увеличиваем отступы кнопок */
+        width: auto;
+        margin-top: 0;
     }
-
-    .buy-button {
-        font-size: 16px; /* Увеличиваем размер текста */
-        width: 120px; /* Увеличиваем ширину кнопки покупки */
-        height: 45px; /* Увеличиваем высоту */
+    .total-price {
+        width: 150px;
+        padding: 5px;
+        top: calc(100% + 5px);
+        bottom: auto;
+        right: 0;
+        transform: none;
     }
+    .phone {
+        padding-left: 205px;
+    }
+    .shopping-list {
+        right: 15px;
+    }
+}
 
+/* Wide screen computer specific styles */
+@media only screen and (min-width: 1200px) {
+    .products {
+        padding: 0 20%;
+    }
     .plus-button,
     .minus-button {
-        font-size: 16px; /* Увеличиваем размер кнопок */
-        width: 35px; /* Увеличиваем ширину */
-        height: 35px; /* Увеличиваем высоту */
+        font-size: 18px;
+        width: 35px;
+        height: 35px;
     }
 }
 
