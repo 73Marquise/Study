@@ -245,9 +245,11 @@
     }
     .search-button {
         padding: 5px 10px;
+        font-size: 14px; /* Уменьшим размер кнопки для iPhone 12 */
     }
     .search-input {
         padding: 3px;
+        font-size: 14px; /* Уменьшим размер текстового поля для iPhone 12 */
     }
     .buttons {
         flex-direction: column;
@@ -342,15 +344,15 @@
 /* Дополнительные стили для iPhone 12 в Safari */
 @media only screen and (max-device-width: 428px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
     .header {
-        padding: 10px;
+        padding: 5px; /* Уменьшим отступы для iPhone 12 */
     }
     .search-button {
-        padding: 8px 15px;
-        font-size: 16px;
+        padding: 5px 10px;
+        font-size: 14px;
     }
     .search-input {
-        padding: 5px;
-        font-size: 16px;
+        padding: 3px;
+        font-size: 14px;
     }
     .buttons {
         flex-direction: row;
@@ -369,10 +371,13 @@
         transform: none;
     }
     .phone {
-        padding-left: 205px;
+        padding-left: 0; /* Уберем дополнительный отступ для iPhone 12 */
+    }
+    .phone img {
+        width: 100%;
     }
     .shopping-list {
-        right: 15px;
+        right: 0;
     }
 }
 
